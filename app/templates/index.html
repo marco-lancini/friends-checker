@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block pagetitle %}{{ config.SITE_NAME }}{% endblock pagetitle %}
+
+{% block content %}
+    <div class="hero-unit">
+        <h1>Hi!</h1>
+        {% if g.user %}
+           	<p>You can now download your friend list or some photos!</p>
+		{% else %}
+			<p>To start, you need to authenticate via Facebook social login.</p>
+			<p><a href="{{ url_for('login') }}" class="btn btn-primary btn-large">Login &raquo;</a></p>
+		{% endif %}
+    </div>
+{% endblock content %}
+

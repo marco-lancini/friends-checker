@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block pagetitle %}Friend List{% endblock pagetitle %}
+
+{% block js_scripts %}
+    <script>
+        function todo() {
+            alert('TODO');
+        }
+    </script>
+{% endblock js_scripts %}
+
+
+{% block fullwidth %}
+    <div class="row">
+        <div class="alert alert-info span2">Total: {{data.list_len}} friends</div>
+        <div class="alert alert-success span4">
+            <strong><p>Added Friends:</p></strong>
+            <ul>
+                {% for a in added %}
+                    <li>{{a.name}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="alert alert-error span4">
+            <strong><p>Removed Friends:</p></strong>
+            <ul>
+                {% for r in removed %}
+                    <li>{{r.name}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock fullwidth %}
+
+
+{% block content %}
+    <!-- SIDEBAR -->
+    <div class="span3">
+        <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+                <li class="nav-header">Save</li>
+                    <li><a href="#" onclick="todo()">Dump current contact list</a></li>
+                    <li><a href="#" onclick="todo()">Dump entire database</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="span9">
+        <table id="data" class="table table-condensed table-striped tablesorter">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>UID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in data.list %}
+                    <tr>
+                        <td>{{c.name}}</td>
+                        <td>{{c.id}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

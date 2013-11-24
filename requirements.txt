@@ -1,0 +1,4 @@
+requests
+pymongo
+Flask
+Flask-OAuth

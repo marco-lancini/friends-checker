@@ -1,0 +1,37 @@
+body {
+    padding-top: 60px;
+    color: #5a5a5a;
+    background: #EEE;
+    font-family: 'Helvetica Neue', 'Liberation Sans', Helvetica, Arial, sans-serif;
+}
+
+/* GENERAL */
+.container-fluid { /*padding-right: 35px;*/ padding-left: 50px; }
+.inline { display: inline; }
+.clear { clear: both; }
+.right { float: right; }
+.page-header { margin: 0px; border-bottom: 0px; }
+.fullwidth { display: block; }
+.breadcrumb { background: #EEE; }
+.grey { display: inline; float: right; color: grey; font-size: 70%; font-weight: bold; padding-right: 15px; }
+
+
+/* CONTENT */
+.page-header { margin-bottom: 5px; }
+.hero-unit { background-color: #E5E5E5; }
+
+
+/* NAVBAR */
+.sidebar-nav { padding: 9px 0; }
+
+
+/* LOG */
+.msg-error { color: red;}
+.msg-group { 
+  padding-top: 10px;
+  padding-bottom: 0px;
+  font-weight: bold;
+  font-size: 14pt;
+}
+.msg-album { padding-top: 5px; font-size: 11pt; }
+.msg-photo { padding-left: 20px; font-style: italic; }

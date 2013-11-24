@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pagetitle %}Photos{% endblock pagetitle %}
+
+{% block js_scripts %}
+    <script>
+        function todo() {
+            alert('TODO');
+        }
+    </script>
+{% endblock js_scripts %}
+
+
+{% block content %}
+    <!-- SIDEBAR -->
+    <div class="span3">
+        <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+                <li class="nav-header">Save</li>
+                    <li><a href="#" onclick="todo()">Dump entire database</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="span9">
+        <div class="alert alert-info span12">
+            <h5>Friend to analyze:</h5>
+            <form class="form-search" action="{{ url_for('photos') }}" method="POST">
+                <input type="text" class="input-medium search-query" name="name" id="name_search" placeholder="Name..." data-provide="typeahead" data-source="{{ ahead }}" autocomplete="off">
+                <button type="submit" class="btn">Download</button>
+            </form>
+
+            <p><small>The photos will be downloaded into the folder: <i>{{ folder }}</i></small></p>
+        </div>
+
+        <h2>{{ name|default('Friend not selected') }}</h2>
+
+        {% for line in result %}
+            {% if line.type == 'error' %}
+                <span class="msg-error">
+            {% else %}
+                {% if line.type == 'group' %}
+                    <br/>
+                    <span class="msg-group">
+                {% else %}
+                    {% if line.type == 'album' %}
+                        <span class="msg-album">
+                    {% else %}
+                        {% if line.type == 'photo' %}
+                            <span class="msg-photo">
+                        {% else %}
+                            <span>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            {{ line.message }}</span>
+            <br/>
+        {% endfor %}
+    </div>
+{% endblock content %}

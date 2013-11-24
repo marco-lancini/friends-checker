@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <title>{% block title %}{{ config.SITE_NAME }}{% endblock title %}</title>
+    <meta name="description" content="{{ config.DESCRIPTION }}">
+    <meta name="author" content="{{ config.AUTHOR }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='img/icon.png') }}" rel="icon" type="image/png">
+
+    <!-- CSS -->
+    {% block css %}
+        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" rel="stylesheet">
+     
+        <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">    
+    {% endblock css %}
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    {% block js_scripts %}
+    {% endblock js_scripts %}
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="{{ url_for('index') }}">{{ config.SITE_NAME }}</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav pull-right">
+                        {% if g.user %}
+                            <li><a href="{{ url_for('logout') }}"><i class="icon-off"></i> Logout</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('login') }}"><i class="icon-lock"></i> Login</a></li>
+                        {% endif %}
+                    </ul>
+                    <ul class="nav">
+                        {% if g.user %}
+                            <li {% if 'friend_list' in request.path %}class="active"{% endif %}>
+                                <a href="{{ url_for('friend_list') }}">Friend List</a></li>
+                            <li {% if 'photos' in request.path %}class="active"{% endif %}>
+                                <a href="{{ url_for('photos') }}">Photos</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>      
+    
+    <div class="container-fluid">
+        <!-- MESSAGE BAR -->
+            {% block messagebar %}
+                {% if messages %}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ messages }}
+                    </div>
+                {% endif %}
+                {% if errors %}
+                    <div class="alert alert-error">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ errors }}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        <!-- MESSAGE BAR -->
+
+        <!-- PAGE TITLE -->
+            <div class="page-header">
+                <h1>{% block pagetitle %}{% endblock pagetitle %} <small>{% block pagesubtitle %}{% endblock pagesubtitle %}</small></h1>
+
+                {% block fullwidth %}
+                {% endblock fullwidth %}
+            </div>
+        <!-- PAGE TITLE -->
+
+
+        <div class="row-fluid">
+            <div class="span12">
+                <!-- CONTENT -->
+                {% block content %}
+                {% endblock content %}
+                <!-- CONTENT -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/typeahead.js') }}"></script>
+</body>
+</html>
