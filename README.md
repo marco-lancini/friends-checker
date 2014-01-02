@@ -1,5 +1,9 @@
 ## Friends Checker
 
+![status](http://b.repl.ca/v1/status-active-blue.png "status") 
+![build](http://b.repl.ca/v1/build-passing-brightgreen.png "build")  
+
+
 _Friends Checker_ is a Flask-based app that provides some utilities for managing your Facebook's friends.
 
 After logging in with your Facebook account (via OAuth), you have access to these functionalities:
