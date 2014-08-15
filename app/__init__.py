@@ -67,12 +67,12 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'standard',
         },
-        'filelog': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(app.config['BASE_PATH'], 'APP.log'),
-            'formatter': 'verbose'
-        },
+        #'filelog': {
+        #    'level': 'DEBUG',
+        #    'class': 'logging.FileHandler',
+        #    'filename': os.path.join(app.config['BASE_PATH'], 'APP.log'),
+        #    'formatter': 'verbose'
+        #},
     },
     'loggers': {
         'werkzeug': {
@@ -81,7 +81,7 @@ LOGGING = {
             'propagate': True,
         },
         'APP': {
-            'handlers': ['console', 'filelog'],
+            'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': True,
         },
