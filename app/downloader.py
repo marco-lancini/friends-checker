@@ -40,7 +40,7 @@ def download_photo(folder, photos):
     for photo in photos:
         idx += 1
         photo_name_old = os.path.join(folder, photo['id'])
-        photo_name = os.path.join(folder, '%s.png' % photo['id'])
+        photo_name = os.path.join(folder, '%s.jpg' % photo['id'])
 
         if os.path.exists(photo_name_old) or os.path.exists(photo_name):
             # Photo previously downloaded
