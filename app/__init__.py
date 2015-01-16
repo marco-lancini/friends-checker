@@ -94,7 +94,7 @@ logging.config.dictConfig(LOGGING)
 # LAUNCH
 #=========================================================================
 def start_app():
-    app.run()
+    app.run(port=5000)
 
 
 import views
